@@ -62,7 +62,7 @@ def login_web_class(browser: Chrome, login_id: str, password: str):
 
 def fetch_course_list(my_crs: TakenCourses):
     # ブラウザの自動ダウンロードと起動
-    browser = Chrome(ChromeDriverManager(path='.').install(), options=initialize_chrome_options())
+    browser = Chrome(ChromeDriverManager(path='webclass').install(), options=initialize_chrome_options())
     try:
         # ログイン
         browser = login_web_class(browser, my_crs.user_info.id, my_crs.user_info.password)
@@ -144,7 +144,7 @@ def fetch_course_list(my_crs: TakenCourses):
 
 def fetch_contents(my_crs: TakenCourses):
     # ブラウザを起動
-    browser = Chrome(ChromeDriverManager(path='.').install(), options=initialize_chrome_options())
+    browser = Chrome(ChromeDriverManager(path='webclass').install(), options=initialize_chrome_options())
     try:
         # ログイン
         browser = login_web_class(browser, my_crs.user_info.id, my_crs.user_info.password)

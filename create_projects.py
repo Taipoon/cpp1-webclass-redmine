@@ -5,7 +5,7 @@ import redminelib
 from dotenv import load_dotenv
 from redminelib import Redmine
 
-from webclass.course_elements import Courses
+from course_elements import Courses
 
 
 def export_to_redmine(courses: Courses, categories_filter: list = None):
