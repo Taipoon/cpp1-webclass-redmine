@@ -3,7 +3,7 @@ import re
 import typing
 from typing import List
 
-from CPP_WebClassAPI.webclass.web_class import SemesterSelector
+from .web_class import SemesterSelector
 
 
 class FormatErrorException(Exception):

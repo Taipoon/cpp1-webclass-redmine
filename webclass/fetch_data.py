@@ -9,9 +9,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from webdriver_manager.chrome import ChromeDriverManager
 
-from CPP_WebClassAPI.webclass.course_elements import *
-from CPP_WebClassAPI.webclass.user_info import TakenCourses
-from CPP_WebClassAPI.webclass.web_class import PortalSite
+from .course_elements import *
+from .user_info import TakenCourses
+from .web_class import PortalSite
 
 
 class SelectedYearIsNotFoundException(Exception):
