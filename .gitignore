@@ -1,0 +1,6 @@
+.env
+redmine/.wdm/
+.wdm/
+slack.py
+*.csv
+__pycache__/
