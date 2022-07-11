@@ -2,4 +2,4 @@ colorama
 selenium
 webdriver_manager
 python-redmine
-dotenv
+python-dotenv
