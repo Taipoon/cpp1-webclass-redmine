@@ -2,9 +2,9 @@ import os
 
 from dotenv import load_dotenv
 
-from .redmine import create_projects
-from .webclass.fetch_data import fetch_contents, fetch_course_list
-from .webclass.user_info import User, TakenCourses
+import create_projects
+from webclass.fetch_data import fetch_contents, fetch_course_list
+from webclass.user_info import User, TakenCourses
 
 
 def main():
