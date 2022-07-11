@@ -7,8 +7,7 @@ from redminelib import Redmine
 load_dotenv()
 
 redmine = Redmine(f'{os.getenv("REDMINE_URL")}:{os.getenv("REDMINE_PORT")}',
-                  username=os.getenv('REDMINE_USERNAME'),
-                  password=os.getenv('REDMINE_PASSWORD'))
+                  key=os.getenv("REDMINE_API_KEY"))
 
 projects = redmine.project.all(include=['enabled_modules'])
 

@@ -15,8 +15,7 @@ def export_to_redmine(courses: Courses, categories_filter: list = None):
 
     # APIキーを用いて
     redmine = Redmine(f'{os.getenv("REDMINE_URL")}:{os.getenv("REDMINE_PORT")}',
-                      username=os.getenv('REDMINE_USERNAME'),
-                      password=os.getenv('REDMINE_PASSWORD'))
+                      key=os.getenv("REDMINE_API_KEY"))
 
     # 各講義を1つのプロジェクトとして作成する
     for course in courses.courses:

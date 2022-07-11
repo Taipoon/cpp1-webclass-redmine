@@ -44,14 +44,6 @@ REDMINE_URL=http://x.x.x.x
 # Redmineにアクセスするためのポート番号を指定します
 REDMINE_PORT=3000
 
-# RedmineのログインIDとパスワードを指定します 
-# Redmineの初期起動時の管理者アカウントは
-# ID: admin 
-# PW: admin
-# です。
-REDMINE_USERNAME=admin
-REDMINE_PASSWORD=admin
-
 # Redmineにログイン後、APIを有効にして、アカウントページから取得したAPIキーを指定します
 REDMINE_API_KEY=
 
