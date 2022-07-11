@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 
-import create_projects
+import create_tasks
 from fetch_data import fetch_contents, fetch_course_list
 from user_info import User, TakenCourses
 
@@ -40,8 +40,13 @@ def main():
     courses = fetch_contents(my_course)
 
     # Redmineにデータを流し込む(カテゴリが「レポート」「レポート（成績非公開）」のみを流し込む例)
-    create_projects.export_to_redmine(courses,
-                                      categories_filter=['レポート', 'レポート（成績非公開）'])
+    create_tasks.create_projects(courses)
+
+    # 講義ごとのコンテンツをチケットとして作成する
+    create_tasks.create_issues(courses,
+                               categories_filter=['レポート',
+                                                  'レポート（成績非公開）']
+                               )
 
 if __name__ == '__main__':
     main()
