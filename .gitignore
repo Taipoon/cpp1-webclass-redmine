@@ -4,3 +4,4 @@ redmine/.wdm/
 slack.py
 *.csv
 __pycache__/
+venv/
