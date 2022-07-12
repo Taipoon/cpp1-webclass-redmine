@@ -29,6 +29,7 @@ def create_projects(courses: Courses):
                 identifier=f'{course.course_code.lower()}',
                 description=f'コース名: {course.title}\n講義コード: {course.course_code}\n',
                 is_public=True,
+                tracker_ids=[1, 2, 3],
                 enabled_module_names=['documents',
                                       'files',
                                       'calendar',
@@ -81,6 +82,7 @@ def create_issues(courses: Courses, categories_filter: list = None):
 
             # チケット(issue)の新規作成
             try:
+
                 created_issue = redmine.issue.create(
                     project_id=f'{course.course_code.lower()}',
                     subject=f'{content.content_name}',
