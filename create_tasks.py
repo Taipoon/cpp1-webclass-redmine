@@ -2,6 +2,7 @@ import datetime
 import os
 
 import redminelib
+from colorama import Fore
 from dotenv import load_dotenv
 from redminelib import Redmine
 
@@ -20,7 +21,7 @@ def create_projects(courses: Courses):
     for course in courses.courses:
         try:
             r = redmine.project.get(course.course_code.lower())
-            print(f'「{r}」は既に存在しています')
+            print(f'{Fore.LIGHTYELLOW_EX}「{r}」はプロジェクトID[{r.identifier}]として既に存在しています{Fore.RESET}')
 
         # プロジェクトが存在しない場合に新規作成
         except redminelib.exceptions.ResourceNotFoundError:
@@ -41,7 +42,7 @@ def create_projects(courses: Courses):
                                       'repository',
                                       'boards']
             )
-            print(f'「{course.title}」をプロジェクトID「{course.course_code.lower()}」で作成しました')
+            print(f'{Fore.LIGHTGREEN_EX}「{course.title}」をプロジェクトID「{course.course_code.lower()}」で作成しました{Fore.RESET}')
 
 
 def create_issues(courses: Courses, categories_filter: list = None):
@@ -53,6 +54,7 @@ def create_issues(courses: Courses, categories_filter: list = None):
                       key=os.getenv("REDMINE_API_KEY"))
 
     for course in courses.courses:
+        print(f'{Fore.LIGHTYELLOW_EX}【{course.title}】{Fore.RESET}')
         # コンテンツごとにチケット(issue)を作成します
         for content in course.contents:
             # カテゴリで絞り込む
@@ -82,7 +84,6 @@ def create_issues(courses: Courses, categories_filter: list = None):
 
             # チケット(issue)の新規作成
             try:
-
                 created_issue = redmine.issue.create(
                     project_id=f'{course.course_code.lower()}',
                     subject=f'{content.content_name}',
@@ -91,7 +92,7 @@ def create_issues(courses: Courses, categories_filter: list = None):
                     start_date=start_date,
                     due_date=due_date,
                 )
-                print(f'「{created_issue}」を作成しました')
+                print(f'{" " * 4}「{created_issue}」を作成しました')
             except redminelib.exceptions.ServerError as e:
                 print('失敗しました', e)
     else:

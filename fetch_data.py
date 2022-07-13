@@ -1,3 +1,5 @@
+import logging
+import os
 import sys
 import time
 
@@ -12,6 +14,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 from course_elements import *
 from user_info import TakenCourses
 from web_class import PortalSite
+
+os.environ['WDM_LOG'] = str(logging.NOTSET)
+# Save the driver in project root.
+os.environ['WDM_LOCAL'] = '1'
 
 
 class SelectedYearIsNotFoundException(Exception):
@@ -62,7 +68,7 @@ def login_web_class(browser: Chrome, login_id: str, password: str):
 
 def fetch_course_list(my_crs: TakenCourses):
     # ブラウザの自動ダウンロードと起動
-    browser = Chrome(ChromeDriverManager(path='webclass').install(), options=initialize_chrome_options())
+    browser = Chrome(ChromeDriverManager(path='.').install(), options=initialize_chrome_options())
     try:
         # ログイン
         browser = login_web_class(browser, my_crs.user_info.id, my_crs.user_info.password)
@@ -144,7 +150,7 @@ def fetch_course_list(my_crs: TakenCourses):
 
 def fetch_contents(my_crs: TakenCourses):
     # ブラウザを起動
-    browser = Chrome(ChromeDriverManager(path='webclass').install(), options=initialize_chrome_options())
+    browser = Chrome(ChromeDriverManager(path='.').install(), options=initialize_chrome_options())
     try:
         # ログイン
         browser = login_web_class(browser, my_crs.user_info.id, my_crs.user_info.password)
@@ -266,7 +272,6 @@ def fetch_contents(my_crs: TakenCourses):
         sys.exit(1)
     except KeyboardInterrupt:
         print('中断しました')
-        sys.exit(1)
     except Exception as e:
         print(e)
         sys.exit(1)
